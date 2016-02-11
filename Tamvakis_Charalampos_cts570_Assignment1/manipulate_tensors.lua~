@@ -1,0 +1,28 @@
+-- Fibonacci function
+function fib(n)
+    if(n<2) then return n end
+        return fib(n-2)+fib(n-1)
+end
+-- Custom tensor print Function.
+function myprint(t)
+    for i=1,t:size(1) do
+        for j=1,t:size(2) do
+            io.write(t[i][j],'\t')
+        end
+        io.write('\n')
+    end
+end
+----------------------- QUESTION 1.1 --------------------------------
+--Initialize tensor
+a = torch.Tensor(3,5)
+--Apply function to tensor . This function is to fill each cell with the fibonacci numbers row-wise
+i = 0
+a:apply(function()
+ 
+  i = i + 1
+  return  fib(i)
+end)
+io.write('Primary Tensor:\n')
+myprint(a) -- s is interpreted by a as a 2D matrix
+
+----------------------- QUESTION 1.2 --------------------------------
